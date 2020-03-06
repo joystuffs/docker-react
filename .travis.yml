@@ -1,0 +1,12 @@
+sudo: required
+#we need a copy of docker cli 
+services:
+  - docker
+
+before_install:
+  - docker build -t maxuel/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true maxuel/docker-react npm run test -- --coverage
+
+
