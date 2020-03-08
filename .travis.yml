@@ -9,4 +9,14 @@ before_install:
 script:
   - docker run -e CI=true maxuel/docker-react npm run test -- --coverage
 
-
+deploy:
+  #(elasticbeanstalk per aws)
+  provider: "provider"
+  #(fornita da aws)
+  region: "us-west-2" 
+	app: "nome_applicazione"
+  env: "Docker-env"
+  bucket_name: "bucket_name"
+  bucket_path: "bucket_path"
+  on:
+    branch: master
